@@ -37,6 +37,11 @@
   .hero-text{position:relative;z-index:1;padding:0 6vw 7vh;max-width:1100px}
   .hero h1{font-weight:300;font-size:clamp(46px,8.4vw,128px);line-height:.95;letter-spacing:-.02em;margin:0 0 .28em;font-variation-settings:"opsz" 72}
   .hero p{font-size:clamp(17px,1.6vw,21px);color:var(--wheat-dim);margin:0 0 1.4em;max-width:34em}
+  .hero-text,.hero::after{transition:opacity .5s ease}
+  .hero.is-playing video{opacity:1;object-fit:contain}
+  .hero.is-playing::after{opacity:0}
+  .hero.is-playing .hero-text{opacity:0;pointer-events:none}
+  @media (orientation:portrait){ .hero.is-playing{min-height:0;aspect-ratio:16/9} .hero.is-playing .hero-text{display:none} }
   .play{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--umber);background:var(--wheat);border:0;border-radius:999px;padding:.85em 1.4em;cursor:pointer;display:inline-flex;align-items:center;gap:.6em}
   .play svg{width:12px;height:12px}
   .play:hover{background:#fff6e4}
@@ -109,7 +114,7 @@
     .beats{display:none}
     td img{width:72px}
   }
-  @media (prefers-reduced-motion:reduce){ .hero video{display:none} .hero{background:#120c07 url(assets/poster.jpg) center/cover} }
+  @media (prefers-reduced-motion:reduce){ .hero-text,.hero::after{transition:none} }
 </style>
 </head>
 <body>
@@ -141,7 +146,7 @@
       <figure><img src="assets/s9.jpg" alt="The dog's eye closing"><figcaption><b>0:21</b> Rest, then the name</figcaption></figure>
     </div>
     <div class="beats" aria-hidden="true"><span>Out</span><span>The threshold</span><span>Rest</span></div>
-    <p class="note" style="margin-top:18px;max-width:46em">These pictures are AI previz standing in for the licensed clips listed further down. Each shot maps to a real Filmsupply clip with its ID and price. The finished film is cut only from licensed footage. Edit, colour grade, original score and sound design are mine.</p>
+    <p class="note" style="margin-top:18px;max-width:46em">These pictures are AI previz standing in for the licensed clips listed further down. Each shot maps to a real Filmsupply clip with its ID and price. The finished film is cut only from licensed footage. I made the whole spec with AI tools, including the edit, grade, score and sound.</p>
   </section>
 
   <div class="block">
@@ -273,14 +278,20 @@
 
 <script>
   (function(){
-    var v=document.getElementById('film'), b=document.getElementById('playbtn');
-    if(!v||!b) return;
+    var v=document.getElementById('film'), b=document.getElementById('playbtn'), h=v&&v.closest('.hero');
+    if(!v||!b||!h) return;
     b.addEventListener('click',function(){
+      h.classList.add('is-playing');
+      if(h.getBoundingClientRect().top<0) h.scrollIntoView();
       v.controls=true; v.muted=false;
       var p=v.play(); if(p&&p.catch) p.catch(function(){});
       b.style.visibility='hidden';
     });
-    v.addEventListener('ended',function(){ b.style.visibility='visible'; b.querySelector('span').textContent='Play again'; });
+    v.addEventListener('ended',function(){
+      h.classList.remove('is-playing');
+      v.controls=false; v.load();
+      b.style.visibility='visible'; b.querySelector('span').textContent='Play again';
+    });
   })();
 </script>
 </body>
