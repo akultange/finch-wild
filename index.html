@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What they bring home: a brand film treatment for Finch &amp; Wild</title>
+<meta name="description" content="Treatment and 28-second spec opening for a Finch &amp; Wild brand film, by Luka Skhiladze.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* palette sampled from the graded frames of the opening */
+  :root{
+    --umber:#21170f;      /* shadow of the doorway shot */
+    --umber-2:#2c2016;    /* raised surfaces */
+    --wheat:#eadfc8;      /* fur highlight */
+    --wheat-dim:#bfb19a;  /* secondary text */
+    --ochre:#c09257;      /* backlit fur, links */
+    --slate:#8d8b78;      /* the river: the one cool colour */
+    --rule:rgba(234,223,200,.16);
+    --serif:"Newsreader", Georgia, serif;
+    --sans:"Hanken Grotesk", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--umber);color:var(--wheat);font-family:var(--serif);font-size:19px;line-height:1.62;font-optical-sizing:auto;text-rendering:optimizeLegibility}
+  a{color:var(--ochre);text-underline-offset:3px;text-decoration-thickness:1px}
+  a:hover{color:var(--wheat)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ochre);outline-offset:3px}
+  img,video{display:block;max-width:100%}
+
+  /* hero: the film itself */
+  .hero{position:relative;min-height:100svh;display:grid;align-items:end;background:#120c07;overflow:hidden}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,12,7,0) 45%,rgba(18,12,7,.88) 100%);pointer-events:none}
+  .hero-text{position:relative;z-index:1;padding:0 6vw 7vh;max-width:1100px}
+  .hero h1{font-weight:300;font-size:clamp(46px,8.4vw,128px);line-height:.95;letter-spacing:-.02em;margin:0 0 .28em;font-variation-settings:"opsz" 72}
+  .hero p{font-size:clamp(17px,1.6vw,21px);color:var(--wheat-dim);margin:0 0 1.4em;max-width:34em}
+  .play{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--umber);background:var(--wheat);border:0;border-radius:999px;padding:.85em 1.4em;cursor:pointer;display:inline-flex;align-items:center;gap:.6em}
+  .play svg{width:12px;height:12px}
+  .play:hover{background:#fff6e4}
+
+  main{max-width:1180px;margin:0 auto;padding:0 6vw}
+  section{padding:84px 0 0}
+  .idea{font-size:clamp(23px,2.5vw,31px);line-height:1.42;font-weight:350;max-width:30em;padding-top:96px}
+  .idea em{font-style:italic;color:var(--wheat)}
+
+  /* two-column editorial blocks */
+  .block{display:grid;grid-template-columns:minmax(150px,240px) 1fr;gap:28px 56px;border-top:1px solid var(--rule);padding-top:26px;margin-top:84px}
+  .block>*{min-width:0}
+  .block>h2{font-weight:400;font-style:italic;font-size:24px;line-height:1.25;margin:0;color:var(--wheat)}
+  .block .body{max-width:40em}
+  .block p{margin:0 0 1em}
+  .muted{color:var(--wheat-dim)}
+
+  /* the strip: real sequence, real timecodes */
+  .strip{display:grid;grid-template-columns:repeat(9,minmax(92px,1fr));gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-color:var(--rule) transparent}
+  .strip figure{margin:0}
+  .strip img{aspect-ratio:16/9;object-fit:cover;width:100%;border-radius:2px}
+  .strip figcaption{font-family:var(--sans);font-size:12.5px;color:var(--wheat-dim);margin-top:7px;line-height:1.35}
+  .strip figcaption b{color:var(--wheat);font-weight:500;font-variant-numeric:tabular-nums}
+  .beats{display:grid;grid-template-columns:5fr 3fr 1fr;gap:6px;margin:10px 0 0;font-family:var(--sans);font-size:13px;color:var(--wheat-dim)}
+  .beats span{border-top:1px solid var(--ochre);padding-top:6px}
+
+  .beat{display:grid;grid-template-columns:110px 1fr;gap:18px;margin:0 0 1.3em}
+  .beat .tc{font-family:var(--sans);font-size:14px;color:var(--ochre);font-variant-numeric:tabular-nums;padding-top:4px}
+  .beat h3{font-size:20px;font-weight:500;margin:0 0 .2em}
+  .beat p{margin:0}
+
+  ol.rules{list-style:none;margin:0;padding:0;counter-reset:r}
+  ol.rules li{padding:0 0 .9em 0;margin:0}
+  ol.rules b{font-weight:500}
+
+  /* watch row: vertical + split */
+  .watch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:22px;margin-top:22px;align-items:start}
+  .watch figure{margin:0}
+  .watch video{width:100%;background:#000;border-radius:3px}
+  .watch figcaption{font-family:var(--sans);font-size:13.5px;color:var(--wheat-dim);margin-top:8px;line-height:1.45}
+
+  .options{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:12px 0 18px}
+  .opt{background:var(--umber-2);border-radius:4px;padding:18px 18px 16px}
+  .opt h3{font-size:18px;font-weight:500;margin:0 0 .35em}
+  .opt p{font-size:16px;line-height:1.5;margin:0;color:var(--wheat-dim)}
+  .opt.rec{outline:1px solid var(--ochre)}
+  .opt .tag{font-family:var(--sans);font-size:12px;color:var(--ochre);display:block;margin-bottom:6px}
+
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14.5px;line-height:1.4}
+  th{font-weight:500;text-align:left;color:var(--wheat-dim);padding:0 10px 10px 0;border-bottom:1px solid var(--rule);font-size:13px}
+  td{padding:10px 10px 10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:2px}
+  td .clip{color:var(--wheat)}
+  td small{display:block;color:var(--wheat-dim);font-size:12.5px;margin-top:2px}
+  tr.total td{border-bottom:0;font-weight:600;color:var(--wheat)}
+  .tablewrap{overflow-x:auto}
+
+  .note{font-family:var(--sans);font-size:14.5px;color:var(--wheat-dim);line-height:1.55}
+  footer{max-width:1180px;margin:110px auto 0;padding:28px 6vw 60px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--sans);font-size:14px;color:var(--wheat-dim)}
+
+  @media (max-width:820px){
+    body{font-size:18px}
+    .block{grid-template-columns:1fr;gap:14px}
+    .watch{grid-template-columns:1fr}
+    .watch figure:first-child{max-width:320px}
+    .options{grid-template-columns:1fr}
+    .beat{grid-template-columns:1fr;gap:2px}
+    .strip{grid-template-columns:repeat(9,62vw)}
+    .beats{display:none}
+    td img{width:72px}
+  }
+  @media (prefers-reduced-motion:reduce){ .hero video{display:none} .hero{background:#120c07 url(assets/poster.jpg) center/cover} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <video id="film" src="assets/opening.mp4" poster="assets/poster.jpg" playsinline preload="metadata" aria-label="Spec opening, 28 seconds"></video>
+  <div class="hero-text">
+    <h1>What they bring home</h1>
+    <p>A 45-second brand film for Finch &amp; Wild, cut from licensed stock. This is the treatment, with the first 28 seconds made as a spec so you can see the direction before anything is licensed.</p>
+    <button class="play" id="playbtn" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span>Play the opening, with sound</span></button>
+  </div>
+</header>
+
+<main>
+
+  <p class="idea">A dog’s coat is a record of where it’s been: the field, the river, the rain, the walk home. Most pet-wash films treat that as dirt to get rid of. This one reads the record slowly, the way a perfume film reads a landscape, and then shows the one ritual that looks after it.</p>
+
+  <section aria-labelledby="seq">
+    <h2 id="seq" class="muted" style="font-weight:400;font-size:17px;font-family:var(--sans);margin:0 0 14px">The opening, shot by shot</h2>
+    <div class="strip">
+      <figure><img src="assets/s1.jpg" alt="Golden fur so close it reads as a field"><figcaption><b>0:00</b> Fur that reads as a field</figcaption></figure>
+      <figure><img src="assets/s2.jpg" alt="Meadow of tall grass at first light"><figcaption><b>0:04</b> The meadow</figcaption></figure>
+      <figure><img src="assets/s3.jpg" alt="Golden retriever standing in the misty meadow"><figcaption><b>0:06</b> The dog</figcaption></figure>
+      <figure><img src="assets/s4.jpg" alt="River water running over stones"><figcaption><b>0:09</b> River over stones</figcaption></figure>
+      <figure><img src="assets/s5.jpg" alt="Water running through wet golden fur"><figcaption><b>0:11</b> Water through the coat</figcaption></figure>
+      <figure><img src="assets/s6.jpg" alt="Paws on a stone doorstep"><figcaption><b>0:14</b> The doorstep</figcaption></figure>
+      <figure><img src="assets/s7.jpg" alt="Hands pouring warm water from a jug over the dog"><figcaption><b>0:16</b> Warm water</figcaption></figure>
+      <figure><img src="assets/s8.jpg" alt="Hands working into a wet coat"><figcaption><b>0:19</b> Hands</figcaption></figure>
+      <figure><img src="assets/s9.jpg" alt="The dog's eye closing"><figcaption><b>0:21</b> Rest, then the name</figcaption></figure>
+    </div>
+    <div class="beats" aria-hidden="true"><span>Out</span><span>The threshold</span><span>Rest</span></div>
+    <p class="note" style="margin-top:18px;max-width:46em">These pictures are AI previz standing in for the licensed clips listed further down. Each shot maps to a real Filmsupply clip with its ID and price. The finished film is cut only from licensed footage. Edit, colour grade, original score and sound design are mine.</p>
+  </section>
+
+  <div class="block">
+    <h2>How the full film plays</h2>
+    <div class="body">
+      <div class="beat"><div class="tc">0:00–0:18</div><div><h3>Out</h3><p>One long take to open: a slow push through tall grass at first light that ends inside the dog’s coat, so the field and the fur are the same image. Then short, quiet details. Water over stones, water running through the coat, pollen, burrs, mud drying on the legs. Only wind, water and breath on the soundtrack.</p></div></div>
+      <div class="beat"><div class="tc">0:18–0:33</div><div><h3>The threshold</h3><p>The door. Muddy paws on cold stone. Warm water from a jug, hands working the wash into a wet coat, steam in window light. The bottle appears for the first time here, wet, on the stone edge of the basin. The piano plays its first note.</p></div></div>
+      <div class="beat"><div class="tc">0:33–0:45</div><div><h3>Rest</h3><p>A dry coat in window light. The dog asleep, a hand resting on its side, the field visible through the glass. One held macro of the bottle beside a folded towel. The name.</p></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>What I took from CLAY</h2>
+    <div class="body">
+      <p>I broke Perfumer H’s CLAY film down shot by shot. It’s 19 shots in 62 seconds, but the first one is a single 19-second tilt from the soil to the horizon while the notes are read over it. Only after that does it cut quickly, at about 2.3 seconds a shot. Sixteen of the nineteen shots are locked off. The bottle shows up three times as a detail inside the landscape’s colour and gets a real hero shot only in the last ten seconds. Those became the rules for this film:</p>
+      <ol class="rules">
+        <li><b>Earn the cut.</b> One long opening take, then quick, quiet details.</li>
+        <li><b>Hardly move the camera.</b> It moves three times in the whole film: the opening push, one walk beside the dog, one slow push on the bottle.</li>
+        <li><b>Macro is the wide shot.</b> Fur, water, stone, linen and hands carry the film. Wides are rare and held.</li>
+        <li><b>One palette.</b> Wheat, ochre and umber, with river slate as the only cool colour. Every source is graded into it.</li>
+        <li><b>Shoots, not clips.</b> The dog, the hands and the house come from two or three stock shoots, so it plays as if we filmed it.</li>
+        <li><b>Dignity.</b> No dog looking down the lens, no tongues, no zoomies.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Sound</h2>
+    <div class="body">
+      <p>Sound leads the picture: each scene’s sound starts a few frames before its first image. Close, textural sound does most of the work, with wind in grass, water over stones, water through fur, a paw on stone, the jug, fingers in a wet coat and a slow exhale.</p>
+      <p>Under it sits a low, continuous bed and a felt piano that plays three notes in the whole film: when the dog appears, at the first touch of warm water, and under the name. There’s a finch in the field at the start, and one again, faintly, through the window at the end.</p>
+      <p>No narration in the master. If you want words, short on-screen lines carry it, as in the spec, or a single sentence in a founder’s voice at the end. Mixed to −14 LUFS for social, with a −23 LUFS version for broadcast.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Two more ways to look at it</h2>
+    <div class="body" style="max-width:none">
+      <div class="watch">
+        <figure><video src="assets/hook_9x16.mp4" poster="assets/hook_poster.jpg" controls playsinline preload="none"></video><figcaption>The 6-second vertical. Built first, so the opening works on mute in a feed.</figcaption></figure>
+        <figure><video src="assets/grade_split.mp4" poster="assets/split_poster.jpg" controls playsinline preload="none"></video><figcaption>Before and after the grade. Nine renders that didn’t match, pulled into one look. A stock film has the same problem with clips from different cameras.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>How the bottle gets in</h2>
+    <div class="body" style="max-width:none">
+      <p style="max-width:40em">Stock can’t contain your bottle, so it needs a plan. Whichever route you pick, it appears three times, takes about a tenth of the running time and always sits inside the scene (wet stone, steam, linen). No packshot on white until the end card.</p>
+      <div class="options">
+        <div class="opt rec"><span class="tag">Recommended</span><h3>Plates from your agency</h3><p>A half-day tabletop shoot: the bottle on wet stone, the pump with lather, the hero by a window. I send a lighting reference from the grade so the plates drop straight in.</p></div>
+        <div class="opt"><h3>A CG bottle</h3><p>Built from your packaging files, lit to match the stock and composited into two or three shots. Adds 6–10 hours and needs dielines and material references.</p></div>
+        <div class="opt"><h3>An insert shoot in Tbilisi</h3><p>I’m based in Tbilisi. If you can get product here, I can produce the hands-and-bottle inserts locally with a DP and props, budgeted separately.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Where I’d push back</h2>
+    <div class="body">
+      <ol class="rules">
+        <li><b>45 seconds rather than 60.</b> Stock films sag in the middle at 60. A tight 45, a 15 and a 6 will do more.</li>
+        <li><b>Plan the 6 and the 15 first.</b> Most people will meet Finch &amp; Wild in a feed, so the first two seconds have to work with the sound off. The master is built around them.</li>
+        <li><b>Film the product and the hands for real.</b> Stock is right for fields, rivers and light. Half a day of real inserts makes the whole film feel authored.</li>
+        <li><b>Earn trust as well as feeling.</b> A fragrance film sells a mood, but a $40 wash also has to be believed. Here the trust comes from the care on screen, the hands and the warm water, rather than smoke and silk.</li>
+        <li><b>The luxury lane is filling up.</b> Jo Malone and WildWash launched a dog shampoo in September with Tom Hardy fronting it. Celebrity and scent are taken. Formulation and intimacy are still open, and they suit a quieter film.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Licences for the opening</h2>
+    <div class="body" style="max-width:none">
+      <p style="max-width:40em">Every shot in the spec maps to a clip you can license today. Prices are Filmsupply’s published Web/Social rate. Paid social is quoted separately, and I’d get that quote before we lock the cut. All nine clips list commercial-use releases.</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>Shot</th><th>Filmsupply clip</th><th>Filmmaker</th><th class="n">Length</th><th class="n">Web/Social</th></tr></thead>
+        <tbody>
+          <tr><td><img src="assets/s1.jpg" alt=""></td><td>Fur that reads as a field</td><td><a class="clip" href="https://www.filmsupply.com/clips/a-shimmering-golden-abstract-texture-of-fine-fibers-illuminated-by-warm-light/991555">#991555</a><small>Golden fibres in warm light</small></td><td>Third Witness Studios</td><td class="n">0:04</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s2.jpg" alt=""></td><td>The meadow</td><td><a class="clip" href="https://www.filmsupply.com/clips/tall-golden-and-green-grass-swaying-in-the-wind-under-soft-morning-or-late-afternoon-light/902962">#902962</a><small>Tall grass in soft morning light</small></td><td>Cam MacArthur</td><td class="n">0:09</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s3.jpg" alt=""></td><td>The dog</td><td><a class="clip" href="https://www.filmsupply.com/clips/a-golden-retriever-sits-in-a-grassy-field-during-a-sunset/923187">#923187</a><small>Golden retriever in a field at sunset</small></td><td>Julien Jarry</td><td class="n">0:05</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s4.jpg" alt=""></td><td>River over stones</td><td><a class="clip" href="https://www.filmsupply.com/clips/close-up-of-water-flowing-over-rocks-in-a-creek/881321">#881321</a><small>Water over rocks in a creek</small></td><td>Jane Qian</td><td class="n">0:05</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s5.jpg" alt=""></td><td>Water through the coat</td><td><a class="clip" href="https://www.filmsupply.com/clips/a-dog-is-standing-in-a-stream-shaking-the-water-from-its-fur/654175">#654175</a><small>Dog in a stream, water off the coat</small></td><td>Gioacchino Petronicce</td><td class="n">0:07</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s6.jpg" alt=""></td><td>The doorstep</td><td><a class="clip" href="https://www.filmsupply.com/clips/the-dog-has-mud-all-over-its-legs/913216">#913216</a><small>Mud all over the legs</small></td><td>Quinn Feldman</td><td class="n">0:08</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s7.jpg" alt=""></td><td>Warm water</td><td><a class="clip" href="https://www.filmsupply.com/clips/a-person-pours-water-on-a-soapy-dog/154384">#154384</a><small>Water poured over a soapy dog</small></td><td>Niles Heckman</td><td class="n">0:17</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s8.jpg" alt=""></td><td>Hands</td><td><a class="clip" href="https://www.filmsupply.com/clips/hands-of-a-man-applying-shampoo-to-dogs-fur-and-rubbing/706232">#706232</a><small>Hands working shampoo into fur</small></td><td>Cardboard Spaceship</td><td class="n">0:09</td><td class="n">$219</td></tr>
+          <tr><td><img src="assets/s9.jpg" alt=""></td><td>Rest</td><td><a class="clip" href="https://www.filmsupply.com/clips/a-tight-shallow-focus-closeup-shot-captures-the-expressive-brown-eye-of-a-dog-as-it-slowly-blinks-showing-the-details-and-texture-of-its-thick-brown-and-black-fur/900507">#900507</a><small>A dog’s eye slowly blinking</small></td><td>Philipp Hafner</td><td class="n">0:03</td><td class="n">$219</td></tr>
+          <tr class="total"><td></td><td colspan="4">Opening, 9 clips</td><td class="n">$1,971</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="max-width:46em;margin-top:18px">The full film runs to about 24 shots. All from Filmsupply, that’s roughly $5,260 for Web/Social plus a paid-media quote. The route I’d suggest is a hybrid: 8–10 hero shots from Filmsupply (about $1,750–2,190) and the landscape and texture inserts from an Artlist Max licence (about $480 a year), which covers client work and paid ads for companies with up to 50 people. Music from Musicbed or Artlist, quoted per track. Watermarked comps are free to cut with, so nothing is bought until you approve the edit.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Hours</h2>
+    <div class="body" style="max-width:none">
+      <p style="max-width:40em">You estimated 40 hours. For the full scope I’d plan on 51–56.</p>
+      <div class="tablewrap">
+      <table style="max-width:640px">
+        <thead><tr><th>Phase</th><th class="n">Hours</th></tr></thead>
+        <tbody>
+          <tr><td>Brief, treatment, one direction locked</td><td class="n">4</td></tr>
+          <tr><td>Footage research and shot boards, with alternates</td><td class="n">8</td></tr>
+          <tr><td>First edit with comps and temp music</td><td class="n">8</td></tr>
+          <tr><td>Two rounds of edit revisions</td><td class="n">5</td></tr>
+          <tr><td>Licensing, full-res downloads, conform</td><td class="n">3</td></tr>
+          <tr><td>Colour grade: match every source, build the look, finish</td><td class="n">6</td></tr>
+          <tr><td>Music search and edit to picture</td><td class="n">2</td></tr>
+          <tr><td>Sound design and mix (social and broadcast levels)</td><td class="n">6</td></tr>
+          <tr><td>Bottle integration (agency plates 3, CG bottle 8)</td><td class="n">3–8</td></tr>
+          <tr><td>Cutdowns: 16:9 master, 9:16 at 15 and 6 seconds, 4:5 at 15</td><td class="n">4</td></tr>
+          <tr><td>Delivery and QC</td><td class="n">2</td></tr>
+          <tr class="total"><td>Total</td><td class="n">51–56</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="max-width:40em;margin-top:18px">Forty hours holds if one direction is approved at the treatment stage, the shot boards are signed off before I cut, there are no more than two revision rounds, your agency supplies the product plates, and the cutdowns are a 9:16 and a 4:5 at 15 seconds.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Luka Skhiladze, film colorist and editor. Tbilisi, GMT+4.</span>
+  <span>Unsolicited spec, not commissioned by Finch &amp; Wild. Reply on Upwork.</span>
+</footer>
+
+<script>
+  (function(){
+    var v=document.getElementById('film'), b=document.getElementById('playbtn');
+    if(!v||!b) return;
+    b.addEventListener('click',function(){
+      v.controls=true; v.muted=false;
+      var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      b.style.visibility='hidden';
+    });
+    v.addEventListener('ended',function(){ b.style.visibility='visible'; b.querySelector('span').textContent='Play again'; });
+  })();
+</script>
+</body>
+</html>
